@@ -9,6 +9,7 @@ const ball = document.querySelector(".ball");
 const timerCount = document.querySelector(".timer-count");
 const final= document.querySelector(".final");
 const background = document.querySelector(".background");
+
 let startGame = false;
 let time;
 let touch;
@@ -16,7 +17,7 @@ let currentHit;
 Lowhit = {step: 1}
 Mediumhit = {step: 2}
 fall = {step: 0.5}
-leftRight = {step: 0.5}
+leftRight = {step: 3}
 let hitforce
 let direction
 let totalHit = 5;
@@ -31,6 +32,8 @@ easy.addEventListener("click", () => {
     time = 30
     startGame = true
     ballSize = 1
+    ball.innerHTML = `
+    <img class="size" src="./img/Paper Ball 1.png">`
     currentHit = 0;
     began()
     timerCount.innerHTML = `${time} s`;
@@ -42,6 +45,8 @@ normal.addEventListener("click", () => {
     time = 50
     startGame = true
     ballSize = 1
+    ball.innerHTML = `
+    <img class="size" src="./img/Paper Ball 1.png">`
     currentHit = 0;
     began()
     timerCount.innerHTML = `${time} s`;
@@ -53,6 +58,8 @@ hard.addEventListener("click", () => {
     time = 100
     startGame = true
     ballSize = 1
+    ball.innerHTML = `
+    <img class="size" src="./img/Paper Ball 1.png">`
     currentHit = 0;
     began()
     timerCount.innerHTML = `${time} s`;
@@ -173,9 +180,7 @@ ball.addEventListener("click", () => {
         touch = true;
         hitforce = Math.random() > 0.5 ? 1 : 2
         direction = Math.random() > 0.5 ? 1 : 2
-        console.log(touch)
     }
-    console.log("hit")
 })
 function began(){
     if(startGame == true){
@@ -185,10 +190,12 @@ function began(){
 }
 
 function spawnBall(){
+    let border = game.getBoundingClientRect();
     ball.y = 0;
-    ball.x = 25
-    ball.style.top = ball.y + 'vh';
-    ball.style.left = ball.x + 'vmin';
+    ball.x = (border.width / 2) - 200
+    console.log(border.width)
+    ball.style.top = ball.y + 'px';
+    ball.style.left = ball.x + 'px';
 }
 function fallingBall(){
     if(startGame){
@@ -200,9 +207,9 @@ function moveBall(){
     let border = background.getBoundingClientRect();
     if(direction == 1){
         ball.x = ball.x - leftRight.step
-        ball.style.left = ball.x + 'vmin';
+        ball.style.left = ball.x + 'px';
         if(ball.x < 0){
-            direction == 2
+            direction = 2
         }
         /*if(ballSize == 1){
             if(currentHit == 0 && ball.x < 12){
@@ -241,9 +248,9 @@ function moveBall(){
     }
     if(direction == 2){
         ball.x = ball.x + leftRight.step
-        ball.style.left = ball.x + 'vmin';
-        if(ball.x > (border.width - 50)){
-            direction == 1
+        ball.style.left = ball.x + 'px';
+        if(ball.x > (border.width - 200)){
+            direction = 1
         }
         /*if(ballSize == 1){
             if(currentHit == 0 && ball.x > 37){
@@ -281,9 +288,7 @@ function moveBall(){
         }*/
     }
     if(touch == true){
-        console.log("h")
         if(hitforce == 1){
-            console.log("1")
             ball.y = ball.y - Lowhit.step
             ball.style.top = ball.y + "vh"
             if(ball.y < 0){
@@ -291,7 +296,6 @@ function moveBall(){
             }
         }    
         if(hitforce == 2){
-            console.log("2")
             ball.y = ball.y - Mediumhit.step
             ball.style.top = ball.y + "vh"
             if(ball.y < 0){
@@ -300,7 +304,6 @@ function moveBall(){
         }      
     }
     if(ball.y > 100){
-        console.log("lose")
         startGame = false
             game.classList.add("hide")
             final.classList.remove("hide")
