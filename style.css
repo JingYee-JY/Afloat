@@ -10,6 +10,9 @@ body{
     padding: 0;
     margin: 0;
 }
+*{
+    font-family: "Lilita One";
+}
 .start,
 .selection,
 .game,
@@ -20,25 +23,41 @@ body{
     justify-content: center;
     flex-direction: column;
     place-items: center;
-    gap: 10vh;
+    gap: 10%;
     width: 100%;
     height: 100%;
+    background-color: #A7D6E4;
     background-image: url("./img/Background.png");
     background-repeat: no-repeat;
     background-size: cover;
 }
+.selection{
+    gap:  1%;
+}
+.final{
+    gap:  0%;
+}
+.difficulty{
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
 .title{
-    width: 20vh;
+    width: 60%;
 }
 button{
     background-color: rgba(255, 255, 255,0);
     border: 0px;
 }
 .btn{
-    width: 30vh;
+    width: 90%;
+    max-width: 450px;
 }
 .image{
-    width: 40vh;
+    width: 50%;
+    transform: rotate(-20deg);
+    max-width: 450px;
 }
 .startBuutton{
     width: 60vh;
@@ -46,6 +65,15 @@ button{
 .hide{
     display: none;
     visibility: hidden;
+}
+.easy, .normal, .hard{
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+.difficulty p{
+    color: #18475E;
+    font-size: 40px;
+    font-weight: bolder;
 }
 .top{
     width: 100%;
@@ -56,13 +84,14 @@ button{
     display: flex;
     justify-content: center;
     position: absolute;
-    color: #A3A1AC;
+    color: #18475E;
     font-size: 8vh;
     top: 0vh;
 }
 .ball{
     position: relative;
-    width: 50vmin;
+    width: 300px;
+    height: 300px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -72,8 +101,10 @@ button{
     width: 100%;
     height: 100%;
 }
-.ballImage{
-    width: 25vh;
+.endBallImage{
+    width: 30%;
+    margin-top: 1%;
+    transform: rotate(-20deg);
 }
 .text{
     width: 40vh;
@@ -81,6 +112,33 @@ button{
 .size{
     position: relative;
     width: 50vh;
+}
+.encouarge{
+     font-size: 40px;
+}
+
+.finalBackground{
+    padding: 5% 5%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    background-image: url("./img/FinalBackground.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+}
+.imageText{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.imageText p{
+    margin: 10px auto;
+}
+.tell{
+    text-align: center;
+    font-size: 25px;
 }
 .game-background{
     width: 100%;
@@ -93,5 +151,15 @@ button{
 @media screen and (min-width:768px) and (max-width:1023px) {
     .background{
         margin-left: -20vmin;
+    }
+    .endBallImage{
+        width: 40%;
+    }
+    .encouarge{
+        font-size: 80px;
+    }
+    .tell{
+        margin-bottom: 25px !important;
+        font-size: 40px;
     }
 }

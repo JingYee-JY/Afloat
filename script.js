@@ -55,7 +55,7 @@ normal.addEventListener("click", () => {
 hard.addEventListener("click", () => {
     selection.classList.add("hide")
     game.classList.remove("hide")
-    time = 100
+    time = 70
     startGame = true
     ballSize = 1
     ball.innerHTML = `
@@ -145,7 +145,6 @@ ball.addEventListener("click", () => {
                 ball.innerHTML = `
                 <img class="size" src="./img/Paper Ball 2.png">`
                 currentHit = 0
-                ball.style.width = "40vh"; 
                 changeBallSize = document.querySelector(".size");
                 changeBallSize.style.width = "40vh";  
             }
@@ -154,7 +153,6 @@ ball.addEventListener("click", () => {
                 ball.innerHTML = `
                 <img class="size" src="./img/Paper Ball 3.png">`
                 currentHit = 0
-                ball.style.width = "30vh"; 
                 changeBallSize = document.querySelector(".size");
                 changeBallSize.style.width = "30vh";  
             }
@@ -163,7 +161,6 @@ ball.addEventListener("click", () => {
                 ball.innerHTML = `
                 <img class="size" src="./img/Paper Ball 4.png">`
                 currentHit = 0
-                ball.style.width = "20vh";
                 changeBallSize = document.querySelector(".size");
                 changeBallSize.style.width = "20vh";  
             }
@@ -172,7 +169,6 @@ ball.addEventListener("click", () => {
                 ball.innerHTML = `
                 <img class="size" src="./img/Paper Ball 5.png">`
                 currentHit = 0
-                ball.style.width = "10vh";
                 changeBallSize = document.querySelector(".size"); 
                 changeBallSize.style.width = "10vh"; 
             }
@@ -208,7 +204,7 @@ function moveBall(){
     if(direction == 1){
         ball.x = ball.x - leftRight.step
         ball.style.left = ball.x + 'px';
-        if(ball.x < 0){
+        if(ball.x < - 25){
             direction = 2
         }
         /*if(ballSize == 1){
@@ -324,12 +320,16 @@ function moveBall(){
                 ballImage = "./img/Paper Ball 5.png"
             }
             final.innerHTML = `
-            <img class="title" src="./img/title.png">
-            <img class="ballImage" src="${ballImage}">
-            <img class="text" src="./img/So Close.png">
+            <div class="finalBackground">
+            <div class="imageText">
+            <img class="endBallImage" src="${ballImage}">
+            <p class="encouarge">So Close!</p>
+            <p class="tell">Hit the ball when needed.</p>
             <button class="playAagin">
                 <img class="btn" src="./img/tryAgain.png">
-            </button>`
+            </button>
+            </div>
+            </div>`
             let playAagin= document.querySelector(".playAagin");
             playAagin.addEventListener("click", () => {
                 final.classList.add("hide")
@@ -364,12 +364,16 @@ function updateCountDown(){
                 ballImage = "./img/Paper Ball 5.png"
             }
             final.innerHTML = `
-            <img class="title" src="./img/title.png">
-            <img class="ballImage" src="${ballImage}">
-            <img class="text" src="./img/You did it.png">
+            <div class="finalBackground">
+            <div class="imageText">
+            <img class="endBallImage" src="${ballImage}">
+            <p class="encouarge">You did it!</p>
+            <p class="tell">Keep up the good work!</p>
             <button class="playAagin">
                 <img class="btn" src="./img/tryAgain.png">
-            </button>`
+            </button>
+            </div>
+            </div>`
             let playAagin= document.querySelector(".playAagin");
             playAagin.addEventListener("click", () => {
                 final.classList.add("hide")
