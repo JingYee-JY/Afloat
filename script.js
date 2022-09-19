@@ -12,6 +12,7 @@ const background = document.querySelector(".background");
 
 let startGame = false;
 let time;
+let agianTime;
 let touch;
 let currentHit;
 Lowhit = {step: 1}
@@ -29,7 +30,7 @@ startButton.addEventListener("click", () => {
 easy.addEventListener("click", () => {
     selection.classList.add("hide")
     game.classList.remove("hide")
-    time = 30
+    time = agianTime = 30
     startGame = true
     ballSize = 1
     ball.innerHTML = `
@@ -42,7 +43,7 @@ easy.addEventListener("click", () => {
 normal.addEventListener("click", () => {
     selection.classList.add("hide")
     game.classList.remove("hide")
-    time = 50
+    time = agianTime  = 50
     startGame = true
     ballSize = 1
     ball.innerHTML = `
@@ -55,7 +56,7 @@ normal.addEventListener("click", () => {
 hard.addEventListener("click", () => {
     selection.classList.add("hide")
     game.classList.remove("hide")
-    time = 70
+    time = agianTime  = 70
     startGame = true
     ballSize = 1
     ball.innerHTML = `
@@ -325,13 +326,30 @@ function moveBall(){
             <img class="endBallImage" src="${ballImage}">
             <p class="encouarge">So Close!</p>
             <p class="tell">Hit the ball when needed.</p>
-            <button class="playAagin">
+            </div>
+            </div>
+            <button class="playAgain">
                 <img class="btn" src="./img/tryAgain.png">
             </button>
-            </div>
-            </div>`
-            let playAagin= document.querySelector(".playAagin");
-            playAagin.addEventListener("click", () => {
+            <button class="home">
+                <img class="btn" src="./img/home.png">
+            </button>`
+            let playAgain= document.querySelector(".playAgain");
+            playAgain.addEventListener("click", () => {
+                final.classList.add("hide")
+                game.classList.remove("hide")
+                time = agianTime
+                startGame = true
+                ballSize = 1
+                ball.innerHTML = `
+                <img class="size" src="./img/Paper Ball 1.png">`
+                currentHit = 0;
+                began()
+                timerCount.innerHTML = `${time} s`;
+                spawnBall()
+            })
+            let home = document.querySelector(".home");
+            home.addEventListener("click", () => {
                 final.classList.add("hide")
                 selection.classList.remove("hide")
             })
@@ -369,13 +387,30 @@ function updateCountDown(){
             <img class="endBallImage" src="${ballImage}">
             <p class="encouarge">You did it!</p>
             <p class="tell">Keep up the good work!</p>
-            <button class="playAagin">
-                <img class="btn" src="./img/tryAgain.png">
-            </button>
             </div>
-            </div>`
-            let playAagin= document.querySelector(".playAagin");
-            playAagin.addEventListener("click", () => {
+            </div>
+            <button class="playAgain">
+            <img class="btn" src="./img/tryAgain.png">
+        </button>
+            <button class="home">
+                <img class="btn" src="./img/home.png">
+            </button>`
+            let playAgain= document.querySelector(".playAgain");
+            playAgain.addEventListener("click", () => {
+                final.classList.add("hide")
+                game.classList.remove("hide")
+                time = agianTime
+                startGame = true
+                ballSize = 1
+                ball.innerHTML = `
+                <img class="size" src="./img/Paper Ball 1.png">`
+                currentHit = 0;
+                began()
+                timerCount.innerHTML = `${time} s`;
+                spawnBall()
+            })
+            let home = document.querySelector(".home");
+            home.addEventListener("click", () => {
                 final.classList.add("hide")
                 selection.classList.remove("hide")
             })
