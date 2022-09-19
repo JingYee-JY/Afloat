@@ -391,7 +391,7 @@ function updateCountDown(){
             </div>
             <button class="playAgain">
             <img class="btn" src="./img/tryAgain.png">
-        </button>
+            </button>
             <button class="home">
                 <img class="btn" src="./img/home.png">
             </button>`
