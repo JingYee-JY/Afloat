@@ -208,40 +208,6 @@ function moveBall(){
         if(ball.x < - 25){
             direction = 2
         }
-        /*if(ballSize == 1){
-            if(currentHit == 0 && ball.x < 12){
-                direction = 2;
-            }
-            if(currentHit == 1 && ball.x < 10){
-                direction = 2;
-            }
-            if(currentHit == 2 && ball.x < 8){
-                direction = 2;
-            }
-            if(currentHit == 3 && ball.x < 5){
-                direction = 2;
-            }
-            if(currentHit == 4 && ball.x < 2){
-                direction = 2;
-            }
-        }
-        if(ballSize == 2){
-            if(currentHit == 0 && ball.x < -20){
-                direction = 2;
-            }
-            if(currentHit == 1 && ball.x < -20){
-                direction = 2;
-            }
-            if(currentHit == 2 && ball.x < -20){
-                direction = 2;
-            }
-            if(currentHit == 3 && ball.x < -20){
-                direction = 2;
-            }
-            if(currentHit == 4 && ball.x < -20){
-                direction = 2;
-            }
-        }*/
     }
     if(direction == 2){
         ball.x = ball.x + leftRight.step
@@ -249,40 +215,6 @@ function moveBall(){
         if(ball.x > (border.width - 200)){
             direction = 1
         }
-        /*if(ballSize == 1){
-            if(currentHit == 0 && ball.x > 37){
-                direction = 1;
-            }
-            if(currentHit == 1 && ball.x > 40){
-                direction = 1;
-            }
-            if(currentHit == 2 && ball.x > 42){
-                direction = 1;
-            }
-            if(currentHit == 3 && ball.x > 45){
-                direction = 1;
-            }
-            if(currentHit == 4 && ball.x > 47){
-                direction = 1;
-            }
-        }
-        if(ballSize == 2){
-            if(currentHit == 0 && ball.x > 30){
-                direction = 1;
-            }
-            if(currentHit == 1 && ball.x > 30){
-                direction = 1;
-            }
-            if(currentHit == 2 && ball.x > 30){
-                direction = 1;
-            }
-            if(currentHit == 3 && ball.x > 30){
-                direction = 1;
-            }
-            if(currentHit == 4 && ball.x > 30){
-                direction = 1;
-            }
-        }*/
     }
     if(touch == true){
         if(hitforce == 1){
@@ -351,7 +283,7 @@ function moveBall(){
             let home = document.querySelector(".home");
             home.addEventListener("click", () => {
                 final.classList.add("hide")
-                selection.classList.remove("hide")
+                start.classList.remove("hide")
             })
     }
     ball.y = ball.y + fall.step
@@ -412,7 +344,7 @@ function updateCountDown(){
             let home = document.querySelector(".home");
             home.addEventListener("click", () => {
                 final.classList.add("hide")
-                selection.classList.remove("hide")
+                start.classList.remove("hide")
             })
         }
         time--;
