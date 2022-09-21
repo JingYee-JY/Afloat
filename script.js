@@ -6,6 +6,8 @@ const normal = document.querySelector(".normal");
 const hard = document.querySelector(".hard");
 const game = document.querySelector(".game");
 const ball = document.querySelector(".ball");
+const readyButton = document.querySelector(".readyButton");
+const ready = document.querySelector(".ready");
 const timerCount = document.querySelector(".timer-count");
 const final= document.querySelector(".final");
 const background = document.querySelector(".background");
@@ -15,14 +17,14 @@ let time;
 let agianTime;
 let touch;
 let currentHit;
-Lowhit = {step: 1}
-Mediumhit = {step: 2}
-fall = {step: 0.5}
-leftRight = {step: 3}
+Lowhit = {step: 0.5}
+Mediumhit = {step: 1}
+fall = {step: 0.2}
+leftRight = {step: 1}
 let hitforce
 let direction
 let totalHit = 5;
-let ballSize = 1;
+let ballSize;
 startButton.addEventListener("click", () => {
     start.classList.add("hide")
     selection.classList.remove("hide")
@@ -31,41 +33,40 @@ easy.addEventListener("click", () => {
     selection.classList.add("hide")
     game.classList.remove("hide")
     time = agianTime = 30
-    startGame = true
-    ballSize = 1
-    ball.innerHTML = `
-    <img class="size" src="./img/Paper Ball 1.png">`
-    currentHit = 0;
-    began()
     timerCount.innerHTML = `${time} s`;
-    spawnBall()
+    ready.classList.remove("hide")
 })
 normal.addEventListener("click", () => {
     selection.classList.add("hide")
     game.classList.remove("hide")
     time = agianTime  = 50
-    startGame = true
-    ballSize = 1
-    ball.innerHTML = `
-    <img class="size" src="./img/Paper Ball 1.png">`
-    currentHit = 0;
-    began()
     timerCount.innerHTML = `${time} s`;
-    spawnBall()
+    ready.classList.remove("hide")
 })
 hard.addEventListener("click", () => {
     selection.classList.add("hide")
     game.classList.remove("hide")
     time = agianTime  = 70
+    timerCount.innerHTML = `${time} s`;
+    ready.classList.remove("hide")
+})
+
+readyButton.addEventListener("click", () => {
+    start.classList.add("hide")
+    began()
+})
+
+function began(){
+    ready.classList.add("hide")
     startGame = true
     ballSize = 1
+    currentHit = 0;
     ball.innerHTML = `
     <img class="size" src="./img/Paper Ball 1.png">`
-    currentHit = 0;
-    began()
-    timerCount.innerHTML = `${time} s`;
     spawnBall()
-})
+    beganFalling()
+}
+
 ball.addEventListener("click", () => {
     if(startGame == true && ballSize != 5){
         currentHit = currentHit + 1
@@ -179,7 +180,7 @@ ball.addEventListener("click", () => {
         direction = Math.random() > 0.5 ? 1 : 2
     }
 })
-function began(){
+function beganFalling(){
     if(startGame == true){
         direction = Math.random() > 0.5 ? 1 : 2
         window.requestAnimationFrame(fallingBall);
@@ -257,7 +258,6 @@ function moveBall(){
             <div class="imageText">
             <img class="endBallImage" src="${ballImage}">
             <p class="encouarge">So Close!</p>
-            <p class="tell">Hit the ball when needed.</p>
             </div>
             </div>
             <button class="playAgain">
@@ -271,14 +271,8 @@ function moveBall(){
                 final.classList.add("hide")
                 game.classList.remove("hide")
                 time = agianTime
-                startGame = true
-                ballSize = 1
-                ball.innerHTML = `
-                <img class="size" src="./img/Paper Ball 1.png">`
-                currentHit = 0;
-                began()
                 timerCount.innerHTML = `${time} s`;
-                spawnBall()
+                ready.classList.remove("hide")
             })
             let home = document.querySelector(".home");
             home.addEventListener("click", () => {

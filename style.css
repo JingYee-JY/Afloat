@@ -51,7 +51,7 @@ button{
     border: 0px;
 }
 .btn{
-    width: 90%;
+    width: 80%;
     max-width: 450px;
 }
 .image{
@@ -71,6 +71,49 @@ button{
     margin-bottom: 2%;
 }
 
+.ready{
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    place-items: center;
+    justify-content: center;
+    gap: 5vh;
+    width: 100%;
+    height: 100vh;
+    z-index: 9;
+    top: 0;
+    background-color: transparent;
+}
+
+.pop{
+    background-color: white;
+    position: relative;
+    width: 80%;
+    height: 50%;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.detail{
+    width: 90%;
+    position: relative;
+    height: 60%;
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.detail p {
+    margin: 5px;
+}
+
 .playAgain{
     margin: 18px;
 }
@@ -85,15 +128,23 @@ button{
 .top{
     width: 100%;
 }
+
+p.instruction{
+    padding: 10px;
+    margin: 0 auto;
+    max-width: 80%;
+    font-size: 40px;
+    text-align: center;
+    margin-bottom: 10px;
+    justify-content: center;
+}
 .timer-count{
     margin: 0%;
     width: 100%;
     display: flex;
     justify-content: center;
-    position: absolute;
     color: #18475E;
-    font-size: 8vh;
-    top: 0vh;
+    font-size: 50px;
 }
 .ball{
     position: relative;
@@ -174,7 +225,7 @@ button{
         font-size: 40px;
     }
     .finalBackground{
-        width: 70%;
+        width: 50%;
         border-radius: 20px;
         box-shadow: 0px 15px #DACB55;
     }
@@ -188,7 +239,7 @@ button{
     body{
       width: 100%;
     }
-    .start,.selection,.final,.game,.game-container, .video-container{
+    .start,.selection,.final,.game,.ready,.game-container, .video-container{
         max-width: 400px;
         margin: 0 auto;
     }
@@ -205,7 +256,7 @@ button{
         margin-left: -3vmin;
     }
     .startButton, .againButton,.playAgain,.home,.easy,.normal,.hard{
-        max-width: 250px;
+        max-width: 100%;
     }
     .playAgain{
         margin: 18px;
@@ -216,4 +267,34 @@ button{
     .card-replace{
         height: 230px;
     }
+    .difficulty p {
+        margin: 10px auto;
+    }
+    .detail{
+        font-size: 20px;
+    }
 }
+
+@media screen and (max-width:767px){
+    p.instruction{
+        font-size: 20px;
+    }
+}
+.image-ball{
+    animation: rotate infinite alternate 5s;
+}
+
+
+@keyframes rotate {
+    from {
+      transform: rotate(0deg) translate(25px)
+    }
+    to {
+      transform: rotate(360deg) translate(-25px)
+    }
+  }
+
+
+.playAgain .btn, .home .btn{
+    width: 100%;
+  }
