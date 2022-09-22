@@ -91,7 +91,7 @@ button{
     background-color: white;
     position: relative;
     width: 80%;
-    height: 50%;
+    padding: 20px;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
@@ -101,8 +101,8 @@ button{
 
 .detail{
     width: 90%;
+    margin-bottom: 15px;
     position: relative;
-    height: 60%;
     display: flex;
     text-align: center;
     flex-direction: column;
@@ -112,6 +112,12 @@ button{
 
 .detail p {
     margin: 5px;
+    font-size: 26px;
+}
+
+p.highlight{
+    font-size: 36px;
+    color:crimson;
 }
 
 .playAgain{
@@ -297,4 +303,10 @@ p.instruction{
 
 .playAgain .btn, .home .btn{
     width: 100%;
+  }
+
+  @media screen and (max-width:767px){
+    .endTitle {
+      display: none;
+    }
   }

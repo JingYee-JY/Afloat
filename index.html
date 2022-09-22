@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable =no">
     <title>Afloat</title>
     <link rel="stylesheet" 
     href="https://fonts.googleapis.com/css?family=Lilita One">
@@ -37,7 +37,7 @@
             <div class="pop">
                 <div class="detail">
                     <p>Tap on the ball to keep it in the air.</p>
-                    <p>Be careful!</p>
+                    <p class="highlight">Be careful!</p>
                     <p>The more you tap, the more it deflates!</p>
                 </div>
                 <button class="readyButton">
@@ -63,7 +63,15 @@
             </div>
         
     </div>
-    <div class="final hide"></div>
+    <div class="final hide">
+        <div class="finalBackground"></div>
+            <button class="playAgain">
+                <img class="btn" src="./img/tryAgain.png">
+            </button>
+            <button class="home" onclick="window.location.href=`https://gimme.sg/activations/dementia/`;">
+                <img class="btn" src="./img/home.png">
+            </button>
+    </div>
     <script src="script.js"></script>
 </body>
 </html>

@@ -14,7 +14,6 @@ const background = document.querySelector(".background");
 
 let startGame = false;
 let time;
-let agianTime;
 let touch;
 let currentHit;
 Lowhit = {step: 0.5}
@@ -32,14 +31,14 @@ startButton.addEventListener("click", () => {
 easy.addEventListener("click", () => {
     selection.classList.add("hide")
     game.classList.remove("hide")
-    time = agianTime = 30
+    time = 30
     timerCount.innerHTML = `${time} s`;
     ready.classList.remove("hide")
 })
 normal.addEventListener("click", () => {
     selection.classList.add("hide")
     game.classList.remove("hide")
-    time = agianTime  = 50
+    time = 50
     timerCount.innerHTML = `${time} s`;
     ready.classList.remove("hide")
 })
@@ -263,19 +262,11 @@ function moveBall(){
             <button class="playAgain">
                 <img class="btn" src="./img/tryAgain.png">
             </button>
-            <button class="home">
+            <button class="home" onclick="window.location.href='https://gimme.sg/activations/dementia/';">
                 <img class="btn" src="./img/home.png">
             </button>`
-            let playAgain= document.querySelector(".playAgain");
+            let playAgain = document.querySelector(".playAgain");
             playAgain.addEventListener("click", () => {
-                final.classList.add("hide")
-                game.classList.remove("hide")
-                time = agianTime
-                timerCount.innerHTML = `${time} s`;
-                ready.classList.remove("hide")
-            })
-            let home = document.querySelector(".home");
-            home.addEventListener("click", () => {
                 final.classList.add("hide")
                 start.classList.remove("hide")
             })
@@ -318,25 +309,11 @@ function updateCountDown(){
             <button class="playAgain">
             <img class="btn" src="./img/tryAgain.png">
             </button>
-            <button class="home">
+            <button class="home" onclick="window.location.href='https://gimme.sg/activations/dementia/';">
                 <img class="btn" src="./img/home.png">
             </button>`
-            let playAgain= document.querySelector(".playAgain");
+            let playAgain = document.querySelector(".playAgain");
             playAgain.addEventListener("click", () => {
-                final.classList.add("hide")
-                game.classList.remove("hide")
-                time = agianTime
-                startGame = true
-                ballSize = 1
-                ball.innerHTML = `
-                <img class="size" src="./img/Paper Ball 1.png">`
-                currentHit = 0;
-                began()
-                timerCount.innerHTML = `${time} s`;
-                spawnBall()
-            })
-            let home = document.querySelector(".home");
-            home.addEventListener("click", () => {
                 final.classList.add("hide")
                 start.classList.remove("hide")
             })
