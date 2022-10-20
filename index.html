@@ -59,19 +59,30 @@
                     <div class="ball">
                         <img class="size" src="./img/Paper Ball 1.png">
                     </div>
+                    <hr color="red" class="redLine" />
                 </div>
             </div>
         
     </div>
     <div class="final hide">
-        <div class="finalBackground"></div>
+        <div class="finalBackground">
+            <div class="imageText">
+                <img class="endBallImage">
+                <p class="encouarge"></p>
+            </div>
+        </div>
             <button class="playAgain">
                 <img class="btn" src="./img/tryAgain.png">
             </button>
-            <button class="home" onclick="window.location.href=`https://gimme.sg/activations/dementia/`;">
+            <button class="home">
                 <img class="btn" src="./img/home.png">
             </button>
     </div>
+
+    <audio id="click" src="sound/click.wav"></audio>
+    <audio id="completed" src="./sound/completed.wav"></audio>
+    <audio id="lose" src="./sound/lose.wav"></audio>
+
     <script src="script.js"></script>
 </body>
 </html>

@@ -62,6 +62,29 @@ button{
 .startBuutton{
     width: 60vh;
 }
+
+.startButton:active,.startButton:active,.readyButton:active,.easy:active,.normal:active,.hard:active,.playAgain:active,.home:active{
+    animation: animate 0.2s;
+}
+
+@keyframes animate{
+    0%{
+        transform: rotate(0deg) translateX(0px);
+    }
+    25%{
+        transform: rotate(-20deg) translateX(-10px);
+    }
+    50%{
+        transform: rotate(0deg) translateX(0px);
+    }
+    75%{
+        transform: rotate(20deg) translateX(10px);
+    }
+    100%{
+        transform: rotate(0deg) translateX(0px);
+    }
+}
+
 .hide{
     display: none;
     visibility: hidden;
@@ -154,8 +177,6 @@ p.instruction{
 }
 .ball{
     position: relative;
-    width: 300px;
-    height: 300px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -175,7 +196,12 @@ p.instruction{
 }
 .size{
     position: relative;
-    width: 50vh;
+    width: 100%;
+}
+.redLine{
+    margin: 0;
+    position: absolute;
+    width: 100%;
 }
 .encouarge{
      font-size: 40px;
@@ -217,9 +243,6 @@ p.instruction{
 }
 /*ipad*/
 @media screen and (min-width:768px) and (max-width:1023px) {
-    .background{
-        margin-left: -20vmin;
-    }
     .endBallImage{
         width: 40%;
     }
