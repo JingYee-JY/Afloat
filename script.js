@@ -226,6 +226,8 @@ function moveBall(){
         }      
     }
     if(ball.y > endLine){
+        lose.currentTime = 0
+        lose.play()
         startGame = false
             game.classList.add("hide")
             final.classList.remove("hide")
@@ -240,6 +242,8 @@ function updateCountDown(){
     if(startGame == true){
         timerCount.innerHTML = `${time} s`;
         if(time == 0){
+            completed.currentTime = 0
+            completed.play()
             startGame = false
             game.classList.add("hide")
             final.classList.remove("hide")
