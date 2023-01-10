@@ -1,0 +1,300 @@
+/*Overall*/
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Londrina Solid', cursive;
+
+}
+
+:root {
+  --primary: #2F3690;
+  --secondary: #FBCE59;
+  --fullwidth: 100%;
+  --faded:rgb(25, 78, 32,0.8);
+  --lighter: #00DEAF;
+  --normal: #194E20;
+  --darker: #223E3F;
+}
+
+body {
+  background-color: var(--primary);
+  width: var(--fullwidth);
+  height: var(--fullwidth);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  position: fixed;
+}
+
+.startPage,
+.selectionPage,
+.gamePage,
+.popUp,
+.instructionPage,
+.finalPage{
+  z-index: 10;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  place-items: center;
+  gap: 25px;
+  width: var(--fullwidth);
+  height: var(--fullwidth);
+  background-color: var(--primary);
+  top: 0;
+}
+
+.startPage,
+.selectionPage,
+.instructionPage{
+  background-image: url("../img/Background.png");
+  background-position: bottom;
+  background-size: var(--fullwidth) var(--fullwidth);
+  background-repeat: no-repeat;
+}
+
+.button{
+    width: 60%;
+    height: auto;
+}
+
+.roundedButton{
+    width: 20%;
+    height: auto;
+}
+
+.start:active,.startGame:active,.easy:active,.normal:active,.hard:active,.again:active,.home:active{
+    animation: animate 0.2s;
+}
+
+@keyframes animate{
+    0%{
+        transform: rotate(0deg) translateX(0px);
+    }
+    25%{
+        transform: rotate(-20deg) translateX(-10px);
+    }
+    50%{
+        transform: rotate(0deg) translateX(0px);
+    }
+    75%{
+        transform: rotate(20deg) translateX(10px);
+    }
+    100%{
+        transform: rotate(0deg) translateX(0px);
+    }
+}
+
+.hide {
+    display: none;
+    visibility: hidden;
+}
+
+.title,.ball{
+  width: 55%;
+}
+
+/*StartPage*/
+.preview{
+    width: 100%;
+    height: auto;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+}
+
+/*SelectionPage*/
+.selectionPage .title{
+    margin-top: -150px;
+}
+
+.choices{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+    color: white;
+    margin-top: -15px;
+    font-size: 30px;
+    text-align: center;
+    font-weight: 800;
+    align-items: center;
+}
+
+/*InstructionPage*/
+.instructionPage .title{
+    margin-top: -150px;
+}
+.instructionPage{
+    font-size: 35px;
+    font-weight: 600;
+    text-align: center;
+    gap: 10px;
+    color: white;
+    z-index: 20;
+}
+
+.details{
+    background-color: white;
+    border-radius: 20px;
+    padding: 10px;
+    font-size: 25px;
+    font-weight: 600;
+    color: var(--primary);
+    margin-bottom: 15px;
+}
+
+/*FinalPage*/
+.finalPage{
+    background-color: var(--primary);
+    justify-content: center;
+}
+
+.result{
+    height: auto;
+    width: 80%;
+}
+
+.buttons{
+    display: flex;
+    width: auto;
+    gap: 20px;
+    justify-content: center;
+}
+
+.medal{
+    width: 80%;
+    margin: 0 auto;
+    height: auto;
+}
+
+.scoreText{
+    background-color: var(--secondary);
+    border-radius: 10px;
+    padding: 5px;
+    width: 255px;
+    margin: 0 auto;
+    margin-top: 10px;
+    margin-bottom: -50px;
+    font-size: 40px;
+    text-align: center;
+    color: var(--normal);
+    z-index: 20;
+}
+
+.group{
+    background-color: white;
+    border-radius: 20px;
+    width: 300px;
+    height: 170px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border: 10px solid var(--lighter);
+}
+
+.words1{
+    font-size: 30px;
+    text-align: center;
+    font-weight: 400;
+    color: var(--lighter);
+}
+
+.words2{
+    color: var(--darker);
+    font-size: 60px;
+    font-weight: 900;
+    text-align: center;
+}
+
+/*Rotate*/
+.rotate{
+    display: block;
+    position: fixed;
+    width: var(--fullwidth);
+    height: var(--fullwidth);
+    z-index: -10;
+}
+
+@media (orientation:landscape) {
+    .rotate{
+        display: block;
+        position: fixed;
+        width: var(--fullwidth);
+        height: var(--fullwidth);
+        z-index: 100;
+    }
+}
+
+/*ipad*/
+@media screen and (min-width:768px) and (max-width:1023px) {
+    .title {
+        width: 40%;
+    }
+
+    .preview{
+        width: 80%;
+        margin-left: auto;
+        margin-right: 0;
+    }
+    .button {
+        width: 50%;
+    }
+
+    /*SelectionPage*/
+    .choices {
+        font-size: 50px;
+        gap: 30px;
+    }
+
+    /*InstructionPage*/
+    .instructionPage {
+        font-size: 60px;
+    }
+
+    .details {
+        padding: 20px;
+        font-size: 50px;
+    }
+
+    /*FinalOaage*/
+    .scoreText {
+        background-color: var(--secondary);
+        border-radius: 10px;
+        width: 400px;
+        margin-top: 10px;
+        margin-bottom: -80px;
+        font-size: 75px;
+    }
+
+    .group {
+        width: 600px;
+        height: 400px;
+        display: flex;
+        border: 20px solid var(--lighter);
+    }
+
+    .words1 {
+        font-size: 70px;
+    }
+
+    .words2 {
+        font-size: 140px;
+    }
+}
+/*laptop*/
+@media screen and (min-width:1200px){
+    .startPage,
+    .selectionPage,
+    .gamePage,
+    .popUp,
+    .instructionPage,
+    .finalPage{
+        width: 300px;
+    }
+}   

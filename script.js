@@ -1,22 +1,22 @@
-const start = document.querySelector(".start");
-const startButton = document.querySelector(".startButton");
-const selection = document.querySelector(".selection");
+const startButton = document.querySelector(".start");
 const easy = document.querySelector(".easy");
 const normal = document.querySelector(".normal");
 const hard = document.querySelector(".hard");
-const game = document.querySelector(".game");
-const gameBackground = document.querySelector(".game-background");
-const ball = document.querySelector(".ball");
-const readyButton = document.querySelector(".readyButton");
-const ready = document.querySelector(".ready");
+const startPlaying = document.querySelector(".startGame");
+const playAgain = document.querySelector(".again");
+const homeButton = document.querySelector(".home");
+
+const start = document.querySelector(".startPage");
+const selection = document.querySelector(".selectionPage");
+const game = document.querySelector(".gamePage");
+const instruction = document.querySelector(".instructionPage");
+const final= document.querySelector(".finalPage");
+
+const ball = document.querySelector(".ballImage");
 const timerCount = document.querySelector(".timer-count");
 const redLine = document.querySelector(".redLine");
-const final= document.querySelector(".final");
 const background = document.querySelector(".background");
-const endBallImage = document.querySelector(".endBallImage");
-const encouarge= document.querySelector(".encouarge");
-const playAgain = document.querySelector(".playAgain");
-const homeButton = document.querySelector(".home");
+const result = document.querySelector(".result");
 
 const clickSound = document.getElementById("click")
 const completed = document.getElementById("completed")
@@ -35,6 +35,14 @@ let direction
 let ballWidth
 let offSetY
 let endLine
+let once
+
+//CHANGE HERE FOR THE BALL WIDTH AND FALLING SPEED
+let defaultBallWidth = 250
+let defaultLowhit = 4.5
+let defaultMediumhit = 5
+let defaultFall = 4
+let defaultLeftRight = 4
 
 startButton.addEventListener("click", () => {
     playClickSound()
@@ -42,6 +50,7 @@ startButton.addEventListener("click", () => {
         start.classList.add("hide")
         selection.classList.remove("hide")
         time = 30
+        once = false
     }, 200);
 })
 easy.addEventListener("click", () => {
@@ -67,10 +76,10 @@ hard.addEventListener("click", () => {
     }, 200);
 })
 
-readyButton.addEventListener("click", () => {
+startPlaying.addEventListener("click", () => {
     playClickSound()
     let delay = setTimeout(() => {
-        start.classList.add("hide")
+        instruction.classList.add("hide")
         began()
     }, 200);
 })
@@ -93,13 +102,12 @@ homeButton.addEventListener("click", () => {
 function getReady(){
     selection.classList.add("hide")
     game.classList.remove("hide")
-    timerCount.innerHTML = `${time} s`;
-    ready.classList.remove("hide")
+    instruction.classList.remove("hide")
+    timerCount.innerHTML = `${time}s`;
     spawnBall()
 }
 
 function began(){
-    ready.classList.add("hide")
     startGame = true
     ballSize = 1
     beganFalling()
@@ -111,8 +119,21 @@ ball.addEventListener("click", () => {
         touch = true;
         hitforce = Math.random() > 0.5 ? 1 : 2
         direction = Math.random() > 0.5 ? 1 : 2
+        checkEnd()
     }
 })
+
+function checkEnd(){
+    if(time < 10){
+        let delay = setTimeout(() => {
+            if(!once){
+                completed.currentTime = 0
+                completed.play()
+                once = true
+            }
+        },(time + 1) * 1000)
+    }
+}
 function beganFalling(){
     if(startGame == true){
         direction = Math.random() > 0.5 ? 1 : 2
@@ -121,64 +142,70 @@ function beganFalling(){
 }
 
 function spawnBall(){
-    let border = gameBackground.getBoundingClientRect();
+    let border = background.getBoundingClientRect();
     ball.y = 0;
-    if(border.width > 768){
-        offSetY = 200
+
+    //check screen size
+    //CHANGE FOR PHONE & COMPUTER 
+    if(border.width < 500){
+        //CHANGE HERE FOR THE LOSE CONDITION FOR LINE
+        endLine = border.height - 300;
+        //CHANGE HERE FOR THE BALL WIDTH AND SPEED FOR DIFFERENT LEVEL
         if(difficulty == 1){
-            ballWidth = 400
-            Lowhit = 4.5
-            Mediumhit = 5
-            fall = 4
-            leftRight = 4
-            endLine = border.height - 100
+            ballWidth = defaultBallWidth
+            Lowhit = defaultLowhit
+            Mediumhit = defaultMediumhit
+            fall = defaultFall
+            leftRight = defaultLeftRight
         }
         if(difficulty == 2){
-            ballWidth = 325
-            Lowhit = 5.5
-            Mediumhit = 6
-            fall = 5
-            leftRight = 5
-            endLine = border.height - 160
+            ballWidth = defaultBallWidth - 50
+            Lowhit = defaultLowhit + 1
+            Mediumhit = defaultMediumhit + 1
+            fall = defaultFall + 1
+            leftRight = defaultLeftRight + 1
         }
         if(difficulty == 3){
-            ballWidth = 300
-            Lowhit = 6.5
-            Mediumhit = 7
-            fall = 6
-            leftRight = 6
-            endLine = border.height - 220
+            ballWidth = defaultBallWidth - 100
+            Lowhit = defaultLowhit + 2
+            Mediumhit = defaultMediumhit + 2
+            fall = defaultFall + 2
+            leftRight = defaultLeftRight + 2
         }
+        offSetY = ballWidth
     }
-    if(border.width < 768){
-        offSetY = 125
+    //CHANGE FOR IPAD
+    if(border.width > 500){
+        //CHANGE HERE FOR THE LOSE CONDITION FOR LINE
+        endLine = border.height - 500;
+        //CHANGE HERE FOR THE BALL WIDTH AND SPEED FOR DIFFERENT LEVEL
         if(difficulty == 1){
-            ballWidth = 250
-            Lowhit = 2.5
-            Mediumhit = 3
-            fall = 2
-            leftRight = 2
-            endLine = border.height - 50
+            ballWidth = defaultBallWidth + 100
+            Lowhit = defaultLowhit + 2
+            Mediumhit = defaultMediumhit + 2
+            fall = defaultFall + 2
+            leftRight = defaultLeftRight + 2
         }
         if(difficulty == 2){
-            ballWidth = 225
-            Lowhit = 3.5
-            Mediumhit = 4
-            fall = 3
-            leftRight = 3
-            endLine = border.height - 80
+            ballWidth = defaultBallWidth + 75
+            Lowhit = defaultLowhit + 3
+            Mediumhit = defaultMediumhit + 3
+            fall = defaultFall + 3
+            leftRight = defaultLeftRight + 3
         }
         if(difficulty == 3){
-            ballWidth = 200
-            Lowhit = 4.5
-            Mediumhit = 5
-            fall = 4
-            leftRight = 4
-            endLine = border.height - 110
+            ballWidth = defaultBallWidth + 55
+            Lowhit = defaultLowhit + 4
+            Mediumhit = defaultMediumhit + 4
+            fall = defaultFall + 4
+            leftRight = defaultLeftRight + 4
         }
+        offSetY = ballWidth
     }
+    
     ball.style.width = ballWidth + "px";
     ball.style.height = ballWidth + "px";
+    console.log(endLine)
     redLine.style.top = endLine + 'px';
     ball.x = (border.width / 2) - offSetY
     ball.style.top = ball.y + 'px';
@@ -225,14 +252,14 @@ function moveBall(){
             return
         }      
     }
-    if(ball.y > endLine){
+    console.log(endLine + ballWidth)
+    if(ball.y > (endLine + ballWidth)){
         lose.currentTime = 0
         lose.play()
         startGame = false
             game.classList.add("hide")
             final.classList.remove("hide")
-            endBallImage.src = "./img/Paper Ball 5.png"
-            encouarge.innerHTML = "So Close!"
+            result.src = "./img/lose.png"
     }
     ball.y = ball.y + fall
     ball.style.top = ball.y + "px"
@@ -240,15 +267,14 @@ function moveBall(){
 
 function updateCountDown(){
     if(startGame == true){
-        timerCount.innerHTML = `${time} s`;
+        timerCount.innerHTML = `${time}s`;
         if(time == 0){
             completed.currentTime = 0
             completed.play()
             startGame = false
             game.classList.add("hide")
             final.classList.remove("hide")
-            endBallImage.src = "./img/Paper Ball 1.png"
-            encouarge.innerHTML = "You did it!"
+            result.src = "./img/win.png"
         }
         time--;
     }

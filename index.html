@@ -6,78 +6,60 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable =no">
     <title>Afloat</title>
     <link rel="stylesheet" 
-    href="https://fonts.googleapis.com/css?family=Lilita One">
-    <link rel="stylesheet" href="style.css" />
+    href="https://fonts.googleapis.com/css2?family=Londrina+Solid:wght@300;400;900&display=swap">
+    <link rel="stylesheet" href="./css/layout.css" />
+    <link rel="stylesheet" href="./css/game.css" />
 </head>
 <body>
-    <div class="start">
+    <div class="startPage">
         <img class="title" src="./img/title.png">
-        <img class="image image-ball" src="./img/Paper Ball 1.png">
-        <button class="startButton">
-            <img class="btn" src="./img/start.png">
-        </button>
+        <img class="preview" src="./img/preview.png">
+        <img class="start button" src="./img/start.png">
     </div>
-    <div class="selection hide">
-        <img class="image" src="./img/Paper Ball 1.png">
-        <div class="difficulty">
-            <p>Select Difficulty</p>
-            <button class="easy">
-                <img class="btn" src="./img/easy.png">
-            </button>
-            <button class="normal">
-                <img class="btn" src="./img/normal.png">
-            </button>
-            <button class="hard">
-                <img class="btn" src="./img/hard.png">
-            </button>
-        </div>
+
+    <div class="selectionPage hide">
+        <img class="ball" src="./img/Paper Ball 1.png">
+        <div class="choices">
+            <p>Choose one</p>
+            <img class="easy button" src="./img/easy.png">
+            <img class="normal button" src="./img/normal.png">
+            <img class="hard button" src="./img/hard.png">
+          </div>
     </div>
-    <div class="game hide">
-        <div class="ready hide">
-            <div class="pop">
-                <div class="detail">
-                    <p>Tap on the ball to keep it in the air.</p>
-                    <p class="highlight">Be careful!</p>
-                    <p>The more you tap, the more it deflates!</p>
-                </div>
-                <button class="readyButton">
-                    <img class="btn" src="./img/ready.png">
-                </button>
-            </div>
+
+    <div class="instructionPage hide">
+        <img class="ball" src="./img/Paper Ball 1.png">
+        <p>How to play</p>
+        <div class="details">
+            <p>Tap the ball for  <br> 
+                30s to make  <br>
+                it float</p>
         </div>
-        <div class="top">
-            <div class="right">
-                <img class="icon hide" src="./img/help.png">
-                <img class="icon hide" src="./img/setting.png">
-            </div>
-            <div class="lower">
-                <p class="timer-count">00 s</p>
-            </div>
+        <img class="startGame button" src="./img/playGame.png">
+    </div>
+
+    <div class="gamePage hide">
+        <div class="timer-count">
+        <p>00s</p>
         </div>
-            <div class="game-background">
-                <div class="background">
-                    <div class="ball">
-                        <img class="size" src="./img/Paper Ball 1.png">
-                    </div>
-                    <hr color="red" class="redLine" />
-                </div>
+        <div class="background">
+            <div class="ballImage">
+                <img class="size" src="./img/Paper Ball 1.png">
             </div>
+            <hr color="red" class="redLine" />
+        </div>
         
     </div>
-    <div class="final hide">
-        <div class="finalBackground">
-            <div class="imageText">
-                <img class="endBallImage">
-                <p class="encouarge"></p>
-            </div>
+
+    <div class="finalPage hide">
+        <img class="result">
+        <div class="buttons">
+          <img class="again roundedButton" src="./img/againBtn.png">
+          <img class="home roundedButton" src="./img/home.png">
         </div>
-            <button class="playAgain">
-                <img class="btn" src="./img/tryAgain.png">
-            </button>
-            <button class="home">
-                <img class="btn" src="./img/home.png">
-            </button>
     </div>
+
+    <img class="rotate" src="./img/rotate.png">
 
     <audio id="click" src="sound/click.wav"></audio>
     <audio id="completed" src="./sound/completed.wav"></audio>
